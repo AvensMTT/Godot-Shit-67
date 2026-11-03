@@ -76,6 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://c5mu4233ypkit" path="res://Assets/Building/Cartoon_Medieval_Field_Work_Level_Set_Building - Chimney 04.png" id="74_pmgwn"]
 [ext_resource type="Texture2D" uid="uid://dc88rb0fakwqu" path="res://Assets/Building/Cartoon_Medieval_Field_Work_Level_Set_Building - Decor Roof 01.png" id="75_nmy34"]
 [ext_resource type="Texture2D" uid="uid://hnnn6mt12kae" path="res://Assets/Building/Cartoon_Medieval_Field_Work_Level_Set_Building - Decor Roof 02.png" id="76_dswkv"]
+[ext_resource type="PackedScene" uid="uid://bad36tkll5nmj" path="res://Scenes/platform.tscn" id="77_lknxd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("3_wrm1d")
@@ -426,7 +427,9 @@ sources/60 = SubResource("TileSetAtlasSource_846i3")
 position = Vector2(1, 0)
 script = ExtResource("2_qxrlw")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=275322800]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=275322800]
+position = Vector2(0, -25)
+offset = Vector2(0, -80)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=457136185]
@@ -436,3 +439,6 @@ tile_set = SubResource("TileSet_do4cf")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=373558855]
 scale = Vector2(0.5, 0.5)
 tile_set = SubResource("TileSet_wqo8i")
+
+[node name="Platform" parent="." unique_id=11109282 instance=ExtResource("77_lknxd")]
+position = Vector2(176, -146)
