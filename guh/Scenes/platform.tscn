@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ckoqor8c6sr04"]
+
+[ext_resource type="Texture2D" uid="uid://b0d6ktccllsxn" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 11.png" id="1_1rc8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh8tv"]
+size = Vector2(128, 116)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=622748685]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1552442821]
+texture = ExtResource("1_1rc8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=363622452]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_sh8tv")
+one_way_collision = true
