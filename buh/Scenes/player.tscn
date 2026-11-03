@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dnoji78p28srf"]
-
-[ext_resource type="PackedScene" uid="uid://dnoji78p28srf" path="res://Scenes/player.tscn" id="1_v0iea"]
-
-[node name="Player" unique_id=700103572 instance=ExtResource("1_v0iea")]
-z_index = 5
