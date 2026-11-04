@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bo3ijmgvna1td" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 04.png" id="30_nqk4g"]
 [ext_resource type="Texture2D" uid="uid://w2mct67gtxej" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 05.png" id="31_fh6x0"]
 [ext_resource type="PackedScene" uid="uid://ckoqor8c6sr04" path="res://Scenes/platform.tscn" id="32_ese38"]
+[ext_resource type="PackedScene" uid="uid://d2oapamu4fwn0" path="res://Scenes/coin.tscn" id="33_oeip8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0obb"]
 texture = ExtResource("2_8m3t6")
@@ -226,6 +227,44 @@ sources/27 = SubResource("TileSetAtlasSource_ifeo7")
 sources/28 = SubResource("TileSetAtlasSource_qj5kr")
 sources/29 = SubResource("TileSetAtlasSource_d5jaa")
 
+[sub_resource type="Animation" id="Animation_ese38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(578, 195)]
+}
+
+[sub_resource type="Animation" id="Animation_oeip8"]
+resource_name = "new_animation"
+length = 3.0000000000000004
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(582, 195), Vector2(1200, 195)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xe308"]
+_data = {
+&"RESET": SubResource("Animation_ese38"),
+&"new_animation": SubResource("Animation_oeip8")
+}
+
 [node name="Game" type="Node2D" unique_id=933130223]
 
 [node name="Player" parent="." unique_id=993227575 instance=ExtResource("1_ebmjs")]
@@ -235,8 +274,19 @@ position = Vector2(-1, 0)
 position = Vector2(1, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1633004129]
-tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAABAAAABwAAAAAAAAACAAEABgAAAAAAAAABAAEACwAAAAAAAAADAAEADAAAAAAAAAAAAAEACgAAAAAAAAD//wEACgAAAAAAAAD+/wAABQAAAAAAAAD+/wEACQAAAAAAAAD8/wEACAAAAAAAAAD9/wEABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAABAAAABwAAAAAAAAACAAEABgAAAAAAAAABAAEACwAAAAAAAAADAAEADAAAAAAAAAAAAAEACgAAAAAAAAD//wEACgAAAAAAAAD+/wAABQAAAAAAAAD+/wEACQAAAAAAAAD8/wEACAAAAAAAAAD9/wEABgAAAAAAAAAKAAEACAAAAAAAAAALAAEABgAAAAAAAAAMAAEABgAAAAAAAAAKAAIADQAAAAAAAAADAAIAEQAAAAAAAAACAAIACgAAAAAAAAABAAIACgAAAAAAAAAAAAIACgAAAAAAAAD//wIACgAAAAAAAAALAAIACgAAAAAAAAAMAAIACgAAAAAAAAANAAIACgAAAAAAAAAOAAEADAAAAAAAAAAOAAIAEQAAAAAAAAANAAEABgAAAAAAAAA=")
 tile_set = SubResource("TileSet_jht8s")
 
 [node name="Platform" parent="." unique_id=622748685 instance=ExtResource("32_ese38")]
 position = Vector2(92, -128)
+
+[node name="Platform2" parent="." unique_id=104089077 instance=ExtResource("32_ese38")]
+position = Vector2(578, 195)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=565606753]
+libraries/ = SubResource("AnimationLibrary_xe308")
+autoplay = &"new_animation"
+
+[node name="Coin" parent="." unique_id=22036487 instance=ExtResource("33_oeip8")]
+position = Vector2(1601, 80)
+scale = Vector2(0.5, 0.5)

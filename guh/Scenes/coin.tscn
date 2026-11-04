@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d2oapamu4fwn0"]
+
+[ext_resource type="Texture2D" uid="uid://rvhv40sgl7qk" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 01.png" id="1_81h6x"]
+[ext_resource type="Script" uid="uid://ciwadhemb6jto" path="res://Scripts/coin.gd" id="1_qbp07"]
+[ext_resource type="Texture2D" uid="uid://bw76qbub8mope" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 02.png" id="2_qbp07"]
+[ext_resource type="Texture2D" uid="uid://b8lr6iuh3okyo" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 03.png" id="3_2l7mo"]
+[ext_resource type="Texture2D" uid="uid://dq4p81a0hqwao" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 04.png" id="4_q30xt"]
+[ext_resource type="Texture2D" uid="uid://bciy2jg1b6h74" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 05.png" id="5_7w2r2"]
+[ext_resource type="Texture2D" uid="uid://b3c3qyvoacru6" path="res://Assets/Collectable Object/Crystal_Caves_Forest_2D_Platformer_Tileset_Collectable Object - Coin 06.png" id="6_tthw5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do4cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_81h6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qbp07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2l7mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q30xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7w2r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tthw5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_do4cf"]
+radius = 51.24451
+
+[node name="Coin" type="Area2D" unique_id=22036487]
+collision_mask = 3
+script = ExtResource("1_qbp07")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=598959734]
+sprite_frames = SubResource("SpriteFrames_do4cf")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1148823161]
+shape = SubResource("CircleShape2D_do4cf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
