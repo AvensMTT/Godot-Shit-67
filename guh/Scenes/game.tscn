@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dbtud6a6p5ews" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://d0afu28o8jr2h" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Bonus.png" id="2_8m3t6"]
+[ext_resource type="Texture2D" uid="uid://4q6psvs7bl7b" path="res://Assets/Background/Crystal_Caves_Forest_2D_Platformer_Tileset_Background - Layer 00.png" id="2_i26dy"]
 [ext_resource type="Texture2D" uid="uid://bwqrw7sx126bm" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Brick 01.png" id="3_ese38"]
+[ext_resource type="Texture2D" uid="uid://semijp2je1sq" path="res://Assets/Background/Crystal_Caves_Forest_2D_Platformer_Tileset_Background - Layer 01.png" id="3_lmoi6"]
 [ext_resource type="Texture2D" uid="uid://bm26jxikk001x" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 06.png" id="4_oeip8"]
 [ext_resource type="Texture2D" uid="uid://benwdr5febn5i" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 07.png" id="5_xe308"]
 [ext_resource type="Texture2D" uid="uid://bcqg1vptwq0fu" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 08.png" id="6_d3cha"]
@@ -33,6 +35,21 @@
 [ext_resource type="Texture2D" uid="uid://w2mct67gtxej" path="res://Assets/Platfromer/Crystal_Caves_Forest_2D_Platformer_Tileset_Platformer - Ground 05.png" id="31_fh6x0"]
 [ext_resource type="PackedScene" uid="uid://ckoqor8c6sr04" path="res://Scenes/platform.tscn" id="32_ese38"]
 [ext_resource type="PackedScene" uid="uid://d2oapamu4fwn0" path="res://Scenes/coin.tscn" id="33_oeip8"]
+[ext_resource type="PackedScene" uid="uid://vkuw44yknn0x" path="res://Scenes/killzone.tscn" id="34_xe308"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uxt2"]
+texture = ExtResource("2_i26dy")
+1:0/size_in_atlas = Vector2i(82, 46)
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ym3tv"]
+texture = ExtResource("3_lmoi6")
+1:0/size_in_atlas = Vector2i(82, 46)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_do4cf"]
+sources/0 = SubResource("TileSetAtlasSource_6uxt2")
+sources/1 = SubResource("TileSetAtlasSource_ym3tv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0obb"]
 texture = ExtResource("2_8m3t6")
@@ -227,6 +244,9 @@ sources/27 = SubResource("TileSetAtlasSource_ifeo7")
 sources/28 = SubResource("TileSetAtlasSource_qj5kr")
 sources/29 = SubResource("TileSetAtlasSource_d5jaa")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_do4cf"]
+distance = -444.0
+
 [sub_resource type="Animation" id="Animation_ese38"]
 length = 0.001
 tracks/0/type = "value"
@@ -272,21 +292,36 @@ position = Vector2(-1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=952164435]
 position = Vector2(1, 0)
+limit_bottom = 375
+limit_smoothed = true
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=2004109749]
+tile_map_data = PackedByteArray("AAD+/wEAAAABAAAAAABQAAEAAAABAAAAABCiAAEAAAABAAAAAACx/wEAAAABAAAAABAAANP/AAABAAAAAABSANP/AAABAAAAAACv/9P/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_do4cf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1633004129]
-tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAABAAAABwAAAAAAAAACAAEABgAAAAAAAAABAAEACwAAAAAAAAADAAEADAAAAAAAAAAAAAEACgAAAAAAAAD//wEACgAAAAAAAAD+/wAABQAAAAAAAAD+/wEACQAAAAAAAAD8/wEACAAAAAAAAAD9/wEABgAAAAAAAAAKAAEACAAAAAAAAAALAAEABgAAAAAAAAAMAAEABgAAAAAAAAAKAAIADQAAAAAAAAADAAIAEQAAAAAAAAACAAIACgAAAAAAAAABAAIACgAAAAAAAAAAAAIACgAAAAAAAAD//wIACgAAAAAAAAALAAIACgAAAAAAAAAMAAIACgAAAAAAAAANAAIACgAAAAAAAAAOAAEADAAAAAAAAAAOAAIAEQAAAAAAAAANAAEABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wAABgAAAAAAAAAAAAAABgAAAAAAAAABAAAABwAAAAAAAAACAAEABgAAAAAAAAABAAEACwAAAAAAAAADAAEADAAAAAAAAAAAAAEACgAAAAAAAAD//wEACgAAAAAAAAD+/wAABQAAAAAAAAD+/wEACQAAAAAAAAD8/wEACAAAAAAAAAD9/wEABgAAAAAAAAAKAAEACAAAAAAAAAALAAEABgAAAAAAAAAMAAEABgAAAAAAAAAKAAIADQAAAAAAAAADAAIAEQAAAAAAAAACAAIACgAAAAAAAAABAAIACgAAAAAAAAAAAAIACgAAAAAAAAD//wIACgAAAAAAAAALAAIACgAAAAAAAAAMAAIACgAAAAAAAAANAAIACgAAAAAAAAAOAAEADAAAAAAAAAAOAAIAEQAAAAAAAAANAAEABgAAAAAAAAD+/wIACgAAAAAAAAD9/wIACgAAAAAAAAD8/wIADQAAAAAAAAA=")
 tile_set = SubResource("TileSet_jht8s")
 
-[node name="Platform" parent="." unique_id=622748685 instance=ExtResource("32_ese38")]
-position = Vector2(92, -128)
+[node name="Killzone" parent="." unique_id=1887567547 instance=ExtResource("34_xe308")]
 
-[node name="Platform2" parent="." unique_id=104089077 instance=ExtResource("32_ese38")]
-position = Vector2(578, 195)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=546574963]
+shape = SubResource("WorldBoundaryShape2D_do4cf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=565606753]
-libraries/ = SubResource("AnimationLibrary_xe308")
-autoplay = &"new_animation"
+[node name="Coins" type="Node" parent="." unique_id=950873089]
 
-[node name="Coin" parent="." unique_id=22036487 instance=ExtResource("33_oeip8")]
+[node name="Coin" parent="Coins" unique_id=22036487 instance=ExtResource("33_oeip8")]
 position = Vector2(1601, 80)
 scale = Vector2(0.5, 0.5)
+
+[node name="Platforms" type="Node" parent="." unique_id=602562344]
+
+[node name="Platform" parent="Platforms" unique_id=622748685 instance=ExtResource("32_ese38")]
+position = Vector2(92, -128)
+
+[node name="Platform2" parent="Platforms" unique_id=104089077 instance=ExtResource("32_ese38")]
+position = Vector2(578, 195)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2" unique_id=565606753]
+libraries/ = SubResource("AnimationLibrary_xe308")
+autoplay = &"new_animation"
